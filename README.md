@@ -1,4 +1,4 @@
-###Project Future ErosionSim
+Project Future ErosionSim
 
 Features:
 - isometric grid
