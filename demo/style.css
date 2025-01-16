@@ -1,0 +1,229 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.header-container {
+  height: 15vh;
+  width: 100vw;
+  /* background-color: rgb(79, 124, 157); */
+  background-image: url(assets/demo/header-image.png);
+  background-size: cover;
+  background-position: middle;
+  background-repeat: no-repeat;
+  /* border-bottom:black;
+  border-style: solid;
+  border-width: 0px, 0px, 0px, 0px; */
+}
+
+.game-container {
+  display: flex;
+  height: 85vh;
+  width: 100vw;
+  background-color: palegoldenrod;
+}
+
+.game-container .blockly-container {
+  position: relative;
+  height: 100%;
+  width: 50%;
+  background-color: palegreen;
+}
+
+#blocklyDiv {
+  position:absolute;
+	top: 0;
+	bottom: 80px;
+	right: 0;
+	left: 0;
+}
+.game-container .blockly-container .blockly-btns-container {
+  display:flex;
+  position: absolute;
+  background-color: gray;
+  bottom: 0;
+  right: 0;
+  left:0;
+  height:80px;
+}
+
+.game-container .canvas-container {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 50%;
+  background-color: #f8f6e8;
+}
+
+.game-container .canvas-container .game-animation {
+  height: 100%;
+  width:100%;
+  background-image:url(assets/demo/emptySimAnim1-Frame1x500.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+.game-container .canvas-container canvas {
+  display: block;
+  height:100%;
+  width: 100%;
+  background-color: red;
+}
+
+
+.blockly-btn {
+  display: flex;
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  max-width: fit-content;
+  min-width: fit-content;
+
+  font-size: 25px;
+  padding: 6px;
+  padding-left:15px;
+  padding-right:15px;
+  margin: 10px;
+  font-family: 'VT323', "Press Start 2P", serif;
+  text-decoration: none;
+  color: white;
+}
+.blockly-btn:disabled {
+  background: #8f918d;
+  box-shadow: inset -6px -6px 0px 0px #686868;
+}
+.blockly-btn:before, .blockly-btn:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-sizing: content-box;
+}
+.blockly-btn:before {
+  top: -6px;
+  left: 0;
+  border-top: 6px black solid;
+  border-bottom: 6px black solid;
+}
+.blockly-btn:after {
+  left: -6px;
+  top: 0;
+  border-left: 6px black solid;
+  border-right: 6px black solid;
+}
+.blockly-btn-run {
+  background: #92CD41;
+  box-shadow: inset -4px -4px 0px 0px #4AA52E;
+}
+.blockly-btn-run:not(:disabled):hover {
+  background: #76c442;
+  box-shadow: inset -6px -6px 0px 0px #4AA52E;
+}
+.blockly-btn-run:active {
+  box-shadow: inset 4px 4px 0px 0px #4AA52E;
+}
+
+.blockly-btn-stop {
+  padding:10px;
+  background: #E76E55;
+  box-shadow: inset -4px -4px 0px 0px #8C2022;
+}
+.blockly-btn-stop:not(:disabled):hover {
+  background: #CE372B;
+  box-shadow: inset -6px -6px 0px 0px #8C2022;
+}
+.blockly-btn-stop:active {
+  box-shadow: inset 4px 4px 0px 0px #8C2022;
+}
+
+.blockly-btn .run-btn-icon {
+  display: block;
+  height: 60%;
+  aspect-ratio: 1/1;
+  background-image: url(assets/demo/playbutton2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+}
+.blockly-btn .stop-btn-icon {
+  display: block;
+  height: 100%;
+  aspect-ratio: 1/1;
+  background-image: url(assets/demo/stop-btn-icon.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+/* .options-bar-button--2 {
+  min-width: 200px;
+  background: #F7D51D;
+  box-shadow: inset -4px -4px 0px 0px #E59400;
+}
+
+.options-bar-button--2:not(:disabled):hover {
+  background: #F2C409;
+  box-shadow: inset -6px -6px 0px 0px #E59400;
+}
+.options-bar-button--2:active {
+  box-shadow: inset 4px 4px 0px 0px #E59400;
+}
+.options-bar-button--4{
+  min-width: 150px;
+} */
+
+.game-container .canvas-container .play-btn {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 10px;
+  height: 70px;
+  width:70px;
+  background-image: url(assets/UI/btn_play.png);
+  background-size: contain;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+.game-container .canvas-container .reset-btn {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 90px;
+  height: 70px;
+  width:70px;
+  background-image: url(assets/UI/btn_reset.png);
+  background-size: contain;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+.game-container .canvas-container .restore-btn {
+  position: absolute;
+  z-index: 10;
+  bottom: 10px;
+  left: 0px;
+  height: 70px;
+  width:100%;
+  background-image: url(assets/demo/btn-restorex500.png);
+  background-size: contain;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+.game-container .canvas-container .compass {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  right: 10px;
+  height: 140px;
+  width:140px;
+  background-image: url(assets/demo/compass.png);
+  background-size: contain;
+  background-repeat:no-repeat;
+  background-position:center;
+}

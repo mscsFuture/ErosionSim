@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erosion Simulator</title>
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"> 
+    <!-- Blockly Scripts-->
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly"></script>
+    <script src="https://unpkg.com/blockly/javascript_compressed"></script>
+    <script src="src/blockly/blockly_definitions.js"></script>
+    <script src="src/blockly/blockly_code_generator.js"></script>
+    <script src="src/blockly/blockly_toolbox.js"></script>
+    <script src="src/blockly/blockly_implementation.js"></script>
+    <script src="src/demo-blockly-workspace.js"></script>
+    <!-- Canvas Scripts - NOT USED IN DEMO -->
+    <!-- <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script> -->
+  </head>
+
+  <body>
+      <div class="header-container">
+
+      </div>
+      <div class="game-container">
+        <div id="blocklyContainer" class="blockly-container">
+          <div id=blocklyDiv>
+            <script>
+              const workspace = Blockly.inject('blocklyDiv', 
+              { toolbox: toolbox,
+                horizontalLayout: false,
+                scrollbars: true,
+                trashcan: false,
+              });
+              // Define the XML for the custom 'start_block'.
+              // const startBlockXml = `<block type="start_block"></block>`;
+
+              /* 
+              getXML() is defined in demo-blockly-workspace and places predetermined blockly blocks
+              into the workspace when the page loads.
+              
+              This function was written for the purpose of the demo and can be removed.
+              */
+              const initBlocklyXML = getXML();
+          
+              // Parse the XML text for the custom block using DOMParser
+              const domParser = new DOMParser();
+              const startBlockDom = domParser.parseFromString(initBlocklyXML, 'text/xml');
+              
+
+              // Add the custom 'start_block' to the existing toolbox configuration
+              Blockly.Xml.appendDomToWorkspace(startBlockDom, workspace);
+              function updateCode(event) {
+              if (workspace.isDragging()) return;
+              const code = javascript.javascriptGenerator.workspaceToCode(workspace);
+              console.log("Workspace changed!");
+              console.log(code);
+              }
+              workspace.addChangeListener(updateCode);
+            </script>
+          </div> <!-- end blocklyDiv -->
+          <div class="blockly-btns-container">
+            <button class="blockly-btn blockly-btn-run" id="runCodeButton" role="button" onclick="runCode()"><div class="run-btn-icon"></div>Run Code</button>
+            <button class="blockly-btn blockly-btn-stop" id="stopCodeButton" role="button">Stop Code<div class="stop-btn-icon"></div></button>
+          </div>
+        </div>  <!-- end blockly-container -->
+        <div class="canvas-container" id="canvasContainer">
+             <div class="play-btn" id="playBtn" onclick="playAnimation()"></div>
+             <div class="reset-btn" id="resetBtn" onclick="resetAnimation()"></div>
+             <div class="restore-btn" id="restoreBtn" onclick="restoreEnvironment()"></div>
+             <div class="compass"></div>
+             <div class="game-animation" id="animation"></div>
+        </div>
+      </div> <!-- end game-container -->
+
+      </div>
+    </div>
+
+
+    <script src="src/demo.js"></script>
+    <!-- <script src="src/sketch.js"></script> -->
+    <script src="src/blockly/time.js"></script>
+  </body>
+</html>
